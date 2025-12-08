@@ -17,8 +17,10 @@ pub fn result(input: &str) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE_1 as SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE_1 as SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

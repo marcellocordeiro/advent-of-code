@@ -37,9 +37,11 @@ fn checksum(blocks: &[Block]) -> usize {
     blocks
         .iter()
         .enumerate()
-        .filter_map(|(index, block)| match *block {
-            Block::FilePart(id) => Some(index * id),
-            Block::Free => None,
+        .filter_map(|(index, block)| {
+            match *block {
+                Block::FilePart(id) => Some(index * id),
+                Block::Free => None,
+            }
         })
         .sum()
 }

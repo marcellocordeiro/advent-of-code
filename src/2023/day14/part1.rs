@@ -1,4 +1,4 @@
-use super::{parse_input, Platform};
+use super::{Platform, parse_input};
 
 pub fn result(input: &str) -> usize {
     let mut platform = parse_input(input);
@@ -9,8 +9,10 @@ pub fn result(input: &str) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

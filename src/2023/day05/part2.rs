@@ -1,4 +1,4 @@
-use super::{get_proper_min_location, Almanac};
+use super::{Almanac, get_proper_min_location};
 
 pub fn result(almanac: &Almanac) -> usize {
     let seed_ranges = almanac
@@ -24,8 +24,10 @@ pub fn result(almanac: &Almanac) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{parse_input, INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE, parse_input},
+        *,
+    };
 
     #[test]
     fn test_sample() {

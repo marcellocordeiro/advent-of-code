@@ -1,7 +1,7 @@
 use itertools::Itertools;
 use pathfinding::directed::bfs::bfs;
 
-use super::{parse_input, possible_directions, Direction, Grid, Position, You};
+use super::{Direction, Grid, Position, You, parse_input, possible_directions};
 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
@@ -85,8 +85,10 @@ fn find_max(grid: &Grid) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

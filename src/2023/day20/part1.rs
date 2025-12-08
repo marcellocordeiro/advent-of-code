@@ -50,8 +50,10 @@ pub fn result(input: &str) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE1, SAMPLE2};
+    use super::{
+        super::{INPUT, SAMPLE1, SAMPLE2},
+        *,
+    };
 
     #[test]
     fn test_sample1() {

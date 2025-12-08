@@ -1,11 +1,10 @@
 use std::collections::{HashMap, HashSet};
 
+use super::parse_input;
 use crate::common::{
     grid::Grid,
     point::{DOWN, LEFT, Point, RIGHT, UP},
 };
-
-use super::parse_input;
 
 pub fn result(input: &str) -> usize {
     let map = parse_input(input);
@@ -75,8 +74,10 @@ fn possible_start_points(map: &Grid<i32>) -> HashSet<Point> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

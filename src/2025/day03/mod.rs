@@ -15,7 +15,7 @@ fn parse_input(input: &str) -> Vec<Vec<usize>> {
         .collect()
 }
 
-fn max_joltage(bank: Vec<usize>, size: usize) -> usize {
+fn max_joltage(bank: &[usize], size: usize) -> usize {
     let mut window_start = 0;
     let mut joltage = 0;
 
@@ -24,7 +24,7 @@ fn max_joltage(bank: Vec<usize>, size: usize) -> usize {
         let window_end = bank.len() - digits_to_spare - 1;
 
         let window = &bank[window_start..=window_end];
-        let max = *window.into_iter().max().unwrap();
+        let max = *window.iter().max().unwrap();
         let index = window.iter().position(|x| *x == max).unwrap();
 
         window_start += index + 1;

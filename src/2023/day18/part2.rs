@@ -1,4 +1,4 @@
-use super::{calculate_area, Direction, Entry};
+use super::{Direction, Entry, calculate_area};
 
 pub fn result(input: &str) -> isize {
     let entries = parse_input(input);
@@ -32,8 +32,10 @@ fn parse_input(input: &str) -> Vec<Entry> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

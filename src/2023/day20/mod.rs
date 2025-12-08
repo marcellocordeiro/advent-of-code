@@ -86,9 +86,11 @@ fn parse_input(input: &str) -> HashMap<String, Module> {
 
     adjusted_modules
         .iter_mut()
-        .filter_map(|(key, value)| match value {
-            Module::Conjunction { inputs, .. } => Some((key, inputs)),
-            _ => None,
+        .filter_map(|(key, value)| {
+            match value {
+                Module::Conjunction { inputs, .. } => Some((key, inputs)),
+                _ => None,
+            }
         })
         .for_each(|(key, inputs)| {
             for (o_key, o_value) in &original_modules {

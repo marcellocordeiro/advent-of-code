@@ -20,8 +20,10 @@ fn each_result(game: &Game) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{parse_game, parse_input, INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE, parse_game, parse_input},
+        *,
+    };
 
     #[test]
     fn test_each_sample_line() {

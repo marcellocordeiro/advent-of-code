@@ -2,7 +2,7 @@ use std::collections::HashSet;
 
 use colored::Colorize;
 
-use super::{parse_input, Grid};
+use super::{Grid, parse_input};
 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
@@ -102,8 +102,10 @@ fn get_intersections(grid: &Grid) {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

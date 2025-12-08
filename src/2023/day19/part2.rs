@@ -1,4 +1,4 @@
-use super::{parse_input, Action, Compare, Rule, Workflow};
+use super::{Action, Compare, Rule, Workflow, parse_input};
 
 pub fn result(input: &str) -> usize {
     let (workflows, _) = parse_input(input);
@@ -183,8 +183,10 @@ fn get_combinations(
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

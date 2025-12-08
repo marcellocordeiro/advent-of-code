@@ -1,6 +1,6 @@
 use itertools::Itertools;
 
-use super::{parse_input, Brick};
+use super::{Brick, parse_input};
 
 pub fn result(input: &str) -> usize {
     let mut bricks = parse_input(input);
@@ -79,8 +79,10 @@ fn settle_bricks(bricks: &mut [Brick]) {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

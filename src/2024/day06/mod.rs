@@ -1,5 +1,6 @@
-use crate::common::{grid::Grid, point::Point};
 use itertools::Itertools;
+
+use crate::common::{grid::Grid, point::Point};
 
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");

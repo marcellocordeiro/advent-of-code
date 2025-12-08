@@ -1,4 +1,4 @@
-use super::{number_matches_count, Card};
+use super::{Card, number_matches_count};
 
 pub fn result(cards: &[Card]) -> i32 {
     cards.iter().map(score).sum()
@@ -16,8 +16,10 @@ fn score(card: &Card) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{parse_input, INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE, parse_input},
+        *,
+    };
 
     #[test]
     fn test_each_sample_line() {

@@ -2,7 +2,7 @@ use std::collections::{HashMap, VecDeque};
 
 use num::Integer;
 
-use super::{parse_input, Module};
+use super::{Module, parse_input};
 
 // We need to make assumptions based on our input. So none of this code looks good :(
 // I will try to refactor it at some point.
@@ -29,9 +29,11 @@ pub fn result(input: &str) -> usize {
     let tg_inputs = modules
         .iter()
         .find(|(key, _module)| *key == "tg")
-        .map(|(_, module)| match module {
-            Module::Conjunction { inputs, .. } => inputs,
-            _ => panic!("Invalid module"),
+        .map(|(_, module)| {
+            match module {
+                Module::Conjunction { inputs, .. } => inputs,
+                _ => panic!("Invalid module"),
+            }
         })
         .unwrap();
 
@@ -42,9 +44,11 @@ pub fn result(input: &str) -> usize {
 
     let broadcast_outputs = modules
         .values()
-        .find_map(|m| match m {
-            Module::Broadcaster { outputs } => Some(outputs),
-            _ => None,
+        .find_map(|m| {
+            match m {
+                Module::Broadcaster { outputs } => Some(outputs),
+                _ => None,
+            }
         })
         .unwrap()
         .clone();
@@ -84,8 +88,7 @@ pub fn result(input: &str) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::INPUT;
+    use super::{super::INPUT, *};
 
     #[test]
     fn test_input() {

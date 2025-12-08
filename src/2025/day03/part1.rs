@@ -3,13 +3,15 @@ use super::{max_joltage, parse_input};
 pub fn result(input: &str) -> usize {
     let banks = parse_input(input);
 
-    banks.into_iter().map(|bank| max_joltage(bank, 2)).sum()
+    banks.into_iter().map(|bank| max_joltage(&bank, 2)).sum()
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

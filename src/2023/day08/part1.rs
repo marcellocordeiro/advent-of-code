@@ -32,8 +32,10 @@ pub fn result(input: &str) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE1_PART1, SAMPLE2_PART1};
+    use super::{
+        super::{INPUT, SAMPLE1_PART1, SAMPLE2_PART1},
+        *,
+    };
 
     #[test]
     fn test_sample1() {

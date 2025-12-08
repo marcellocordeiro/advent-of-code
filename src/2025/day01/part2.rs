@@ -39,7 +39,7 @@ pub fn result(input: &str) -> usize {
                 }
 
                 let current_with_cycles = state.current + rotation;
-                let has_clicked = current_with_cycles < 1 || current_with_cycles > 99;
+                let has_clicked = !(1..=99).contains(&current_with_cycles);
 
                 let next = (state.current + rotation).rem_euclid(100);
 

@@ -1,4 +1,4 @@
-use super::{win_count_optimized, Race};
+use super::{Race, win_count_optimized};
 
 pub fn result(input: &str) -> usize {
     let races = parse_input(input);
@@ -25,17 +25,21 @@ fn parse_input(input: &str) -> Vec<Race> {
     times
         .into_iter()
         .zip(distances)
-        .map(|(time_limit, record_distance)| Race {
-            time_limit,
-            record_distance,
+        .map(|(time_limit, record_distance)| {
+            Race {
+                time_limit,
+                record_distance,
+            }
         })
         .collect()
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{win_count, INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE, win_count},
+        *,
+    };
 
     #[test]
     fn test_each_sample_line() {

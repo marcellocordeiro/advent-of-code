@@ -94,29 +94,30 @@ pub fn next_beams(grid: &Grid, beam: &Beam) -> Vec<Beam> {
             }]
         }
 
-        NextAction::Split(dirs) => dirs
-            .iter()
-            .filter_map(|dir| {
-                let (row_offset, col_offset) = dir.offset();
+        NextAction::Split(dirs) => {
+            dirs.iter()
+                .filter_map(|dir| {
+                    let (row_offset, col_offset) = dir.offset();
 
-                let Some(next_row) = row_cur.checked_add_signed(row_offset) else {
-                    return None;
-                };
+                    let Some(next_row) = row_cur.checked_add_signed(row_offset) else {
+                        return None;
+                    };
 
-                let Some(next_col) = col_cur.checked_add_signed(col_offset) else {
-                    return None;
-                };
+                    let Some(next_col) = col_cur.checked_add_signed(col_offset) else {
+                        return None;
+                    };
 
-                if next_row == row_len || next_col == col_len {
-                    return None;
-                }
+                    if next_row == row_len || next_col == col_len {
+                        return None;
+                    }
 
-                Some(Beam {
-                    position: (next_row, next_col),
-                    direction: *dir,
+                    Some(Beam {
+                        position: (next_row, next_col),
+                        direction: *dir,
+                    })
                 })
-            })
-            .collect(),
+                .collect()
+        }
     }
 }
 

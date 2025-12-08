@@ -39,9 +39,11 @@ fn compact(blocks: &mut [Block]) {
 fn existing_ids(blocks: &[Block]) -> Vec<usize> {
     blocks
         .iter()
-        .filter_map(|block| match *block {
-            Block::FilePart(id) => Some(id),
-            Block::Free => None,
+        .filter_map(|block| {
+            match *block {
+                Block::FilePart(id) => Some(id),
+                Block::Free => None,
+            }
         })
         .dedup()
         .collect()
@@ -63,8 +65,10 @@ fn find_free_slice(slice: &mut [Block], size: usize) -> Option<&mut [Block]> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

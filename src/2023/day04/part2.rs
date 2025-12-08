@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-use super::{number_matches_count, Card};
+use super::{Card, number_matches_count};
 
 pub fn result(cards: &[Card]) -> i32 {
     card_count(cards).values().sum()
@@ -27,8 +27,10 @@ fn card_count(cards: &[Card]) -> BTreeMap<i32, i32> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{parse_input, INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE, parse_input},
+        *,
+    };
 
     #[test]
     fn test_sample_card_count() {

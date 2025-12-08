@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use itertools::Itertools;
 
-use super::{parse_input, sort_hands, Hand, HandType};
+use super::{Hand, HandType, parse_input, sort_hands};
 
 const CARD_STRENGTH: [char; 13] = [
     'A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2',
@@ -44,8 +44,10 @@ fn to_hand_type(cards: &str) -> HandType {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

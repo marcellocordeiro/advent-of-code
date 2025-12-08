@@ -1,8 +1,7 @@
 use std::collections::HashSet;
 
-use crate::common::point::Point;
-
 use super::{Action, Input, next_state, parse_input};
+use crate::common::point::Point;
 
 pub fn result(input: &str) -> usize {
     let input = parse_input(input);
@@ -79,8 +78,10 @@ fn with_obstruction(input: Input, obstruction: Point) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

@@ -1,4 +1,4 @@
-use super::{get_surrounding_coordinates, EngineNumber, EngineSymbol};
+use super::{EngineNumber, EngineSymbol, get_surrounding_coordinates};
 
 pub fn result(numbers: &[EngineNumber], symbols: &[EngineSymbol]) -> i32 {
     symbols
@@ -33,8 +33,10 @@ fn get_surrounding_numbers(symbol: &EngineSymbol, numbers: &[EngineNumber]) -> V
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{parse_input, INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE, parse_input},
+        *,
+    };
 
     #[test]
     fn test_sample() {

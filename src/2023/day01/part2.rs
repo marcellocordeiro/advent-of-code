@@ -55,8 +55,10 @@ fn find_last(x: &str) -> Option<i32> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE_PART2};
+    use super::{
+        super::{INPUT, SAMPLE_PART2},
+        *,
+    };
 
     #[test]
     fn test_each() {

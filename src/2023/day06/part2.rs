@@ -1,4 +1,4 @@
-use super::{win_count_optimized, Race};
+use super::{Race, win_count_optimized};
 
 pub fn result(input: &str) -> usize {
     let race = parse_input(input);
@@ -31,8 +31,10 @@ fn parse_input(input: &str) -> Race {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{win_count, INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE, win_count},
+        *,
+    };
 
     #[test]
     fn test_sample() {

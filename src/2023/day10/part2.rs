@@ -1,6 +1,6 @@
 use itertools::Itertools;
 
-use super::{parse_input, Maze, Tile};
+use super::{Maze, Tile, parse_input};
 
 pub fn result(input: &str) -> i64 {
     let maze = parse_input(input);
@@ -66,11 +66,12 @@ fn go_cycle(maze: &Maze, marked_maze: &mut [Vec<i64>]) -> Vec<(usize, usize)> {
         let next_tile = maze.tiles[next_position.0][next_position.1];
 
         current_dir = match next_tile {
-            Tile::Connects(dirs) => dirs
-                .into_iter()
-                .filter(|dir| *dir != current_dir.moves_to())
-                .exactly_one()
-                .unwrap(),
+            Tile::Connects(dirs) => {
+                dirs.into_iter()
+                    .filter(|dir| *dir != current_dir.moves_to())
+                    .exactly_one()
+                    .unwrap()
+            }
             _ => panic!("err"),
         };
 
@@ -91,8 +92,10 @@ fn go_cycle(maze: &Maze, marked_maze: &mut [Vec<i64>]) -> Vec<(usize, usize)> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE1_PART2, SAMPLE2_PART2, SAMPLE3_PART2};
+    use super::{
+        super::{INPUT, SAMPLE1_PART2, SAMPLE2_PART2, SAMPLE3_PART2},
+        *,
+    };
 
     #[test]
     fn test_sample1() {

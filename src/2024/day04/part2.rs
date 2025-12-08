@@ -1,7 +1,7 @@
-use crate::common::point::{DOWN, LEFT, Point, RIGHT, UP};
 use itertools::Itertools;
 
 use super::parse_input;
+use crate::common::point::{DOWN, LEFT, Point, RIGHT, UP};
 
 const POSSIBLE_ENCODINGS: [&str; 4] = ["MMSS", "SSMM", "SMMS", "MSSM"];
 
@@ -52,8 +52,10 @@ pub fn result(input: &str) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

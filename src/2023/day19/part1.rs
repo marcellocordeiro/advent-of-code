@@ -1,4 +1,4 @@
-use super::{parse_input, Action, Part, Rule, Workflow};
+use super::{Action, Part, Rule, Workflow, parse_input};
 
 pub fn result(input: &str) -> usize {
     let (workflows, parts) = parse_input(input);
@@ -46,8 +46,10 @@ fn test_part_with_workflow(part: &Part, workflow: &Workflow) -> Action {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

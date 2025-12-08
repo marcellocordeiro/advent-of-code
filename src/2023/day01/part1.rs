@@ -18,8 +18,10 @@ fn each_result(line: &str) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE_PART1};
+    use super::{
+        super::{INPUT, SAMPLE_PART1},
+        *,
+    };
 
     #[test]
     fn test_each_sample_line() {

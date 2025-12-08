@@ -9,12 +9,12 @@ fn parse_input(input: &str) -> Vec<i32> {
         .lines()
         .map(|line| {
             let (direction, times) = line.split_at(1);
-            let times = times.parse().unwrap();
+            let times = times.parse::<i32>().unwrap();
 
             match direction {
-                "L" => times * -1,
+                "L" => -times,
                 "R" => times,
-                _ => panic!("Invalid direction: {}", direction),
+                _ => panic!("Invalid direction: {direction}"),
             }
         })
         .collect()

@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-use super::{get_surrounding, parse_input, Grid};
+use super::{Grid, get_surrounding, parse_input};
 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
@@ -42,8 +42,10 @@ fn possible_positions_count<const MAX_STEPS: usize>(grid: &Grid) -> usize {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     fn test_sample() {

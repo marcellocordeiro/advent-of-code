@@ -39,16 +39,18 @@ impl Tile {
 
     pub fn to_ch(self) -> char {
         match self {
-            Self::Connects(dirs) => match dirs {
-                [Direction::North, Direction::South] => '|',
-                [Direction::East, Direction::West] => '-',
-                [Direction::North, Direction::East] => 'L',
-                [Direction::North, Direction::West] => 'J',
-                [Direction::South, Direction::West] => '7',
-                [Direction::South, Direction::East] => 'F',
+            Self::Connects(dirs) => {
+                match dirs {
+                    [Direction::North, Direction::South] => '|',
+                    [Direction::East, Direction::West] => '-',
+                    [Direction::North, Direction::East] => 'L',
+                    [Direction::North, Direction::West] => 'J',
+                    [Direction::South, Direction::West] => '7',
+                    [Direction::South, Direction::East] => 'F',
 
-                _ => panic!("Invalid tile"),
-            },
+                    _ => panic!("Invalid tile"),
+                }
+            }
             Self::Ground => '.',
             Self::Start => 'S',
         }

@@ -103,8 +103,10 @@ fn parse_input(input: &str) -> Vec<Node> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use super::super::{INPUT, SAMPLE};
+    use super::{
+        super::{INPUT, SAMPLE},
+        *,
+    };
 
     #[test]
     #[ignore = "solution is input dependant"]
