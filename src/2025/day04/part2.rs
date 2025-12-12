@@ -9,7 +9,7 @@ pub fn result(input: &str) -> usize {
         let removed = accessible_rolls(&grid);
         count += removed.len();
 
-        if removed.len() == 0 {
+        if removed.is_empty() {
             break;
         }
 

@@ -175,7 +175,7 @@ fn get_combinations(
                 // Rejected, return what we have so far
                 return current_result;
             }
-        };
+        }
     }
 
     unreachable!();

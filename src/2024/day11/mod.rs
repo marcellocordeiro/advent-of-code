@@ -23,7 +23,7 @@ fn iterate(stones: &mut Vec<usize>) {
 
         if *value == 0 {
             *value = 1;
-        } else if count_digits(*value) % 2 == 0 {
+        } else if count_digits(*value).is_multiple_of(2) {
             let (a, b) = split_digits_in_half(*value);
 
             *value = a;

@@ -15,8 +15,8 @@ enum Operation {
 impl From<char> for Operation {
     fn from(value: char) -> Self {
         match value {
-            '+' => Operation::Add,
-            '*' => Operation::Mul,
+            '+' => Self::Add,
+            '*' => Self::Mul,
 
             _ => panic!("Invalid operation: {value}"),
         }

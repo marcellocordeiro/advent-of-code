@@ -34,7 +34,7 @@ pub fn result(input: &str) -> usize {
                     .filter_map(|direction| {
                         let next = point + direction;
 
-                        grid.contains_point(next).then(|| next)
+                        grid.contains_point(next).then_some(next)
                     });
 
                 for next in iter {

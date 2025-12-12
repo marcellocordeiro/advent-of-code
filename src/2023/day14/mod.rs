@@ -45,7 +45,7 @@ impl Platform {
         }
     }
 
-    pub fn total_load(map: &Vec<Vec<Object>>) -> usize {
+    pub fn total_load(map: &[Vec<Object>]) -> usize {
         let rows = map.len();
 
         map.iter()

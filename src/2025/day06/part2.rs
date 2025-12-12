@@ -16,8 +16,8 @@ pub fn result(input: &str) -> usize {
                 .trim()
                 .to_string();
 
-            if string != "" {
-                numbers.push(string.trim().parse::<usize>().unwrap());
+            if !string.is_empty() {
+                numbers.push(string.parse::<usize>().unwrap());
             }
         }
 

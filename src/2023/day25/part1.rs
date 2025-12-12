@@ -44,8 +44,7 @@ fn visit_count_hashmap(graph: &HashMap<String, HashSet<String>>, from: &str) -> 
         let node = graph.get(node).unwrap();
 
         for edge in node {
-            if !visited.contains(edge.as_str()) {
-                visited.insert(edge.as_str());
+            if visited.insert(edge.as_str()) {
                 queue.push_back(edge.as_str());
             }
         }

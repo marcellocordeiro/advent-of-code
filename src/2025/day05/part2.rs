@@ -9,7 +9,7 @@ pub fn result(input: &str) -> usize {
         .ranges
         .into_iter()
         .sorted() // TODO: there's something funky here
-        .map(|range| Some(range))
+        .map(Some)
         .collect::<Vec<_>>();
 
     // TODO: try a better algorithm

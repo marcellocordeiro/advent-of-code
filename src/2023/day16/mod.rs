@@ -99,13 +99,8 @@ pub fn next_beams(grid: &Grid, beam: &Beam) -> Vec<Beam> {
                 .filter_map(|dir| {
                     let (row_offset, col_offset) = dir.offset();
 
-                    let Some(next_row) = row_cur.checked_add_signed(row_offset) else {
-                        return None;
-                    };
-
-                    let Some(next_col) = col_cur.checked_add_signed(col_offset) else {
-                        return None;
-                    };
+                    let next_row = row_cur.checked_add_signed(row_offset)?;
+                    let next_col = col_cur.checked_add_signed(col_offset)?;
 
                     if next_row == row_len || next_col == col_len {
                         return None;

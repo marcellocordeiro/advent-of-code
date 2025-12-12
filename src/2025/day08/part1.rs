@@ -1,14 +1,32 @@
+use std::collections::HashSet;
+
 use itertools::Itertools;
 
 use super::parse_input;
 use crate::year2025::day08::distance_squared;
 
 pub fn result(input: &str) -> usize {
-    let points = parse_input(input);
+    result_with_max_connections(input, 1000)
+}
 
-    let conn = points
+fn result_with_max_connections(input: &str, max_connections: usize) -> usize {
+    let points = parse_input(input)
         .into_iter()
-        .permutations(2)
+        .sorted()
+        .unique()
+        .collect_vec();
+
+    let mut circuits = points
+        .clone()
+        .into_iter()
+        .map(|point| HashSet::from([point]))
+        .collect_vec();
+
+    let pairs = points
+        .into_iter()
+        .combinations(2)
+        .sorted()
+        .unique()
         .map(|perm| {
             let (a, b) = perm.into_iter().collect_tuple().unwrap();
             let distance_squared = distance_squared(&a, &b);
@@ -16,11 +34,27 @@ pub fn result(input: &str) -> usize {
             ((a, b), distance_squared)
         })
         .sorted_by(|a, b| Ord::cmp(&a.1, &b.1))
-        .take(1000)
-        .map(|perm| perm.1)
-        .collect_vec();
+        .map(|perm| perm.0);
 
-    0
+    for (a, b) in pairs.take(max_connections) {
+        let a_set_index = circuits.iter().position(|s| s.contains(&a)).unwrap();
+        let b_set_index = circuits.iter().position(|s| s.contains(&b)).unwrap();
+
+        if a_set_index == b_set_index {
+            continue;
+        }
+
+        let b_set = std::mem::take(&mut circuits[b_set_index]);
+        circuits[a_set_index].extend(b_set);
+    }
+
+    circuits
+        .into_iter()
+        .filter(|c| !c.is_empty())
+        .sorted_by(|a, b| Ord::cmp(&b.len(), &a.len()))
+        .map(|c| c.len())
+        .take(3)
+        .product()
 }
 
 #[cfg(test)]
@@ -32,15 +66,15 @@ mod tests {
 
     #[test]
     fn test_sample() {
-        let result = result(SAMPLE);
+        let result = result_with_max_connections(SAMPLE, 10);
 
-        assert_eq!(result, 0);
+        assert_eq!(result, 40);
     }
 
     #[test]
     fn test_input() {
         let result = result(INPUT);
 
-        assert_eq!(result, 0);
+        assert_eq!(result, 84968);
     }
 }

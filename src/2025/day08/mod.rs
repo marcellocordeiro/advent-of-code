@@ -6,11 +6,19 @@ pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 pub mod part1;
 pub mod part2;
 
-#[derive(Debug, Clone)]
+#[derive(Default, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 struct Vec3 {
-    x: i32,
-    y: i32,
-    z: i32,
+    x: i64,
+    y: i64,
+    z: i64,
+}
+
+impl std::fmt::Debug for Vec3 {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{},{},{}", self.x, self.y, self.z)
+        //f.write_fmt(f, )
+        //f.debug_struct("Vec3") //.field("x", &self.x).field("y", &self.y).field("z", &self.z).finish()
+    }
 }
 
 fn parse_input(input: &str) -> Vec<Vec3> {

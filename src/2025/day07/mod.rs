@@ -16,9 +16,9 @@ enum Field {
 impl From<char> for Field {
     fn from(value: char) -> Self {
         match value {
-            '.' => Field::Space,
-            'S' => Field::Start,
-            '^' => Field::Splitter,
+            '.' => Self::Space,
+            'S' => Self::Start,
+            '^' => Self::Splitter,
 
             _ => panic!("Invalid field: {value}"),
         }
