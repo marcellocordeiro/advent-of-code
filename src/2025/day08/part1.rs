@@ -2,8 +2,7 @@ use std::collections::HashSet;
 
 use itertools::Itertools;
 
-use super::parse_input;
-use crate::year2025::day08::distance_squared;
+use super::{distance_squared, parse_input};
 
 pub fn result(input: &str) -> usize {
     result_with_max_connections(input, 1000)

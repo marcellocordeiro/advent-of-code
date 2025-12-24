@@ -15,7 +15,6 @@ format *ARGS:
 [group("maintenance")]
 lint *ARGS:
   cargo clippy --all-targets {{ARGS}}
-  cargo clippy -p gb-eframe --target wasm32-unknown-unknown {{ARGS}}
 
 # Lint and fix all crates in the workspace, then format
 [group("maintenance")]

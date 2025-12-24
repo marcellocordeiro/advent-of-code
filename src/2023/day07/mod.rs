@@ -1,13 +1,13 @@
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub struct Hand {
-    pub cards: String,
-    pub bid: usize,
+struct Hand {
+    cards: String,
+    bid: usize,
 }
 
 #[derive(PartialEq, Eq, PartialOrd, Ord)]
-pub enum HandType {
+enum HandType {
     HighCard,
     OnePair,
     TwoPair,
@@ -17,7 +17,7 @@ pub enum HandType {
     FiveOfAKind,
 }
 
-pub fn parse_input(input: &str) -> Vec<Hand> {
+fn parse_input(input: &str) -> Vec<Hand> {
     input
         .lines()
         .map(|line| {
@@ -31,7 +31,7 @@ pub fn parse_input(input: &str) -> Vec<Hand> {
         .collect()
 }
 
-pub fn sort_hands<ToHandType>(
+fn sort_hands<ToHandType>(
     hands: &mut [Hand],
     to_hand_type: ToHandType,
     card_strength: &'static [char; 13],

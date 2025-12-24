@@ -7,7 +7,7 @@ pub const SAMPLE2_PART2: &str = include_str!("inputs/sample2_part2.txt");
 pub const SAMPLE3_PART2: &str = include_str!("inputs/sample3_part2.txt");
 
 #[derive(Debug)]
-pub struct Maze {
+struct Maze {
     tiles: Vec<Vec<Tile>>,
     start: (usize, usize),
     i_len: usize,
@@ -15,7 +15,7 @@ pub struct Maze {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Tile {
+enum Tile {
     Connects([Direction; 2]),
     Ground,
     Start,
@@ -37,7 +37,8 @@ impl Tile {
         }
     }
 
-    pub fn to_ch(self) -> char {
+    #[allow(dead_code)]
+    fn to_ch(self) -> char {
         match self {
             Self::Connects(dirs) => {
                 match dirs {
@@ -58,7 +59,7 @@ impl Tile {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Direction {
+enum Direction {
     North,
     South,
     East,
@@ -66,7 +67,7 @@ pub enum Direction {
 }
 
 impl Direction {
-    pub fn offset(self) -> (isize, isize) {
+    fn offset(self) -> (isize, isize) {
         match self {
             Self::North => (-1, 0),
             Self::South => (1, 0),
@@ -85,7 +86,7 @@ impl Direction {
     }
 }
 
-pub fn parse_input(input: &str) -> Maze {
+fn parse_input(input: &str) -> Maze {
     let mut tiles = input
         .lines()
         .map(|line| line.chars().map(Tile::from_ch).collect())

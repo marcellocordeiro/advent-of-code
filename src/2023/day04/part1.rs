@@ -1,6 +1,7 @@
-use super::{Card, number_matches_count};
+use super::{Card, number_matches_count, parse_input};
 
-pub fn result(cards: &[Card]) -> i32 {
+pub fn result(input: &str) -> i32 {
+    let cards = parse_input(input);
     cards.iter().map(score).sum()
 }
 
@@ -38,17 +39,14 @@ mod tests {
 
     #[test]
     fn test_sample() {
-        let cards = parse_input(SAMPLE);
-        let result = result(&cards);
+        let result = result(SAMPLE);
 
         assert_eq!(result, 13);
     }
 
     #[test]
     fn test_input() {
-        let cards = parse_input(INPUT);
-
-        let result = result(&cards);
+        let result = result(INPUT);
 
         assert_eq!(result, 15268);
     }

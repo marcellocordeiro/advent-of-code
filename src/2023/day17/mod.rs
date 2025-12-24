@@ -4,10 +4,10 @@ pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE1: &str = include_str!("inputs/sample1.txt");
 pub const SAMPLE2: &str = include_str!("inputs/sample2.txt");
 
-pub type Grid = Vec<Vec<usize>>;
+type Grid = Vec<Vec<usize>>;
 
 #[derive(Clone, PartialEq, Eq, Hash)]
-pub struct Crucible {
+struct Crucible {
     position: Position,
     direction: Direction,
     remaining: usize,
@@ -15,10 +15,10 @@ pub struct Crucible {
 }
 
 #[derive(Clone, Copy, PartialEq, Eq, Hash)]
-pub struct Position(usize, usize);
+struct Position(usize, usize);
 
 #[derive(Clone, Copy, PartialEq, Eq, Hash)]
-pub enum Direction {
+enum Direction {
     North,
     South,
     East,
@@ -27,7 +27,7 @@ pub enum Direction {
 
 impl Direction {
     #[must_use]
-    pub fn offset(self) -> (isize, isize) {
+    fn offset(self) -> (isize, isize) {
         use Direction::{East, North, South, West};
         match self {
             North => (-1, 0),
@@ -38,7 +38,7 @@ impl Direction {
     }
 
     #[must_use]
-    pub fn turn_left(self) -> Self {
+    fn turn_left(self) -> Self {
         use Direction::{East, North, South, West};
         match self {
             North => West,
@@ -49,7 +49,7 @@ impl Direction {
     }
 
     #[must_use]
-    pub fn turn_right(self) -> Self {
+    fn turn_right(self) -> Self {
         use Direction::{East, North, South, West};
         match self {
             North => East,
@@ -158,7 +158,7 @@ fn get_shortest_path<const MIN_STEPS: usize, const MAX_STEPS: usize>(grid: &Grid
     usize::min(results[0].1, results[1].1)
 }
 
-pub fn parse_input(input: &str) -> Grid {
+fn parse_input(input: &str) -> Grid {
     input
         .lines()
         .map(|line| {

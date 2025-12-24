@@ -6,19 +6,19 @@ use regex::Regex;
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub struct EngineNumber {
-    pub number: i32,
-    pub column_range: Range<usize>,
-    pub row: usize,
+struct EngineNumber {
+    number: i32,
+    column_range: Range<usize>,
+    row: usize,
 }
 
-pub struct EngineSymbol {
-    pub symbol: char,
-    pub column: usize,
-    pub row: usize,
+struct EngineSymbol {
+    symbol: char,
+    column: usize,
+    row: usize,
 }
 
-pub fn parse_input(input: &str) -> (Vec<EngineNumber>, Vec<EngineSymbol>) {
+fn parse_input(input: &str) -> (Vec<EngineNumber>, Vec<EngineSymbol>) {
     let re = Regex::new(r"\d+").unwrap();
 
     input
@@ -58,11 +58,12 @@ pub fn parse_input(input: &str) -> (Vec<EngineNumber>, Vec<EngineSymbol>) {
         })
 }
 
-pub fn is_symbol(ch: char) -> bool {
+#[allow(dead_code)]
+fn is_symbol(ch: char) -> bool {
     ch != '.' && !ch.is_ascii_digit()
 }
 
-pub fn get_surrounding_coordinates(
+fn get_surrounding_coordinates(
     (row, col): (usize, usize),
     //(max_row, max_col): (usize, usize),
 ) -> Vec<(usize, usize)> {

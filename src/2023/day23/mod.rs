@@ -1,20 +1,20 @@
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub type Grid = Vec<Vec<char>>;
+type Grid = Vec<Vec<char>>;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
-pub struct You {
+struct You {
     position: Position,
     direction: Direction,
     weigth: usize,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub struct Position(usize, usize);
+struct Position(usize, usize);
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum Direction {
+enum Direction {
     North,
     South,
     East,
@@ -23,7 +23,7 @@ pub enum Direction {
 
 impl Direction {
     #[must_use]
-    pub fn offset(self) -> (isize, isize) {
+    fn offset(self) -> (isize, isize) {
         use Direction::{East, North, South, West};
         match self {
             North => (-1, 0),
@@ -34,7 +34,7 @@ impl Direction {
     }
 
     #[must_use]
-    pub fn turn_left(self) -> Self {
+    fn turn_left(self) -> Self {
         use Direction::{East, North, South, West};
         match self {
             North => West,
@@ -45,7 +45,7 @@ impl Direction {
     }
 
     #[must_use]
-    pub fn turn_right(self) -> Self {
+    fn turn_right(self) -> Self {
         use Direction::{East, North, South, West};
         match self {
             North => East,
@@ -64,7 +64,7 @@ fn possible_directions(u: &You) -> Vec<Direction> {
     ]
 }
 
-pub fn parse_input(input: &str) -> Grid {
+fn parse_input(input: &str) -> Grid {
     input
         .lines()
         .map(|line| line.chars().collect::<Vec<_>>())

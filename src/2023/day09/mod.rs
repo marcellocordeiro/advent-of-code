@@ -3,7 +3,7 @@ use itertools::Itertools;
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub fn parse_input(input: &str) -> Vec<Vec<i64>> {
+fn parse_input(input: &str) -> Vec<Vec<i64>> {
     input
         .lines()
         .map(|line| {
@@ -14,7 +14,7 @@ pub fn parse_input(input: &str) -> Vec<Vec<i64>> {
         .collect()
 }
 
-pub fn extrapolate(sequence: &[i64]) -> i64 {
+fn extrapolate(sequence: &[i64]) -> i64 {
     let differences = sequence
         .iter()
         .tuple_windows()

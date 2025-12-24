@@ -1,5 +1,4 @@
-use super::parse_input;
-use crate::year2025::day04::accessible_rolls;
+use super::{accessible_rolls, parse_input};
 
 pub fn result(input: &str) -> usize {
     let mut grid = parse_input(input);

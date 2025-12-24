@@ -3,16 +3,16 @@ use std::collections::HashSet;
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub type Grid = Vec<Vec<char>>;
+type Grid = Vec<Vec<char>>;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub struct Beam {
+struct Beam {
     position: (usize, usize),
     direction: Direction,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum Direction {
+enum Direction {
     North,
     South,
     East,
@@ -20,7 +20,7 @@ pub enum Direction {
 }
 
 impl Direction {
-    pub fn offset(self) -> (isize, isize) {
+    fn offset(self) -> (isize, isize) {
         match self {
             Self::North => (-1, 0),
             Self::South => (1, 0),
@@ -30,12 +30,12 @@ impl Direction {
     }
 }
 
-pub enum NextAction {
+enum NextAction {
     Straight(Direction),
     Split([Direction; 2]),
 }
 
-pub fn next_action(grid: &Grid, beam: &Beam) -> NextAction {
+fn next_action(grid: &Grid, beam: &Beam) -> NextAction {
     let (current_row, current_col) = beam.position;
     let current_tile = grid[current_row][current_col];
 
@@ -64,7 +64,7 @@ pub fn next_action(grid: &Grid, beam: &Beam) -> NextAction {
     }
 }
 
-pub fn next_beams(grid: &Grid, beam: &Beam) -> Vec<Beam> {
+fn next_beams(grid: &Grid, beam: &Beam) -> Vec<Beam> {
     let next_action = next_action(grid, beam);
 
     let row_len = grid.len();
@@ -116,7 +116,7 @@ pub fn next_beams(grid: &Grid, beam: &Beam) -> Vec<Beam> {
     }
 }
 
-pub fn get_visited_count(grid: &Grid, first_beam: Beam) -> usize {
+fn get_visited_count(grid: &Grid, first_beam: Beam) -> usize {
     let mut visited = HashSet::new();
     let mut history = HashSet::new();
 
@@ -141,7 +141,7 @@ pub fn get_visited_count(grid: &Grid, first_beam: Beam) -> usize {
     visited.len()
 }
 
-pub fn parse_input(input: &str) -> Grid {
+fn parse_input(input: &str) -> Grid {
     input
         .lines()
         .map(|line| line.chars().collect::<Vec<_>>())

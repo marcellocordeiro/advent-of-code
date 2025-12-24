@@ -1,5 +1,4 @@
-use super::parse_input;
-use crate::year2025::day06::Operation;
+use super::{Operation, parse_input};
 
 pub fn result(input: &str) -> usize {
     let columns = parse_input(input);

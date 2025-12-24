@@ -2,7 +2,7 @@ pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
-pub enum Object {
+enum Object {
     Sphere, // Rounded rocks
     Rock,
     Empty,
@@ -19,6 +19,7 @@ impl Object {
         }
     }
 
+    #[allow(dead_code)]
     fn to_ch(self) -> char {
         match self {
             Self::Sphere => 'O',
@@ -28,14 +29,15 @@ impl Object {
     }
 }
 
-pub struct Platform {
+struct Platform {
     map: Vec<Vec<Object>>,
     rows: usize,
     columns: usize,
 }
 
 impl Platform {
-    pub fn print(&self) {
+    #[allow(dead_code)]
+    fn print(&self) {
         for row in &self.map {
             for column in row {
                 print!("{}", column.to_ch());
@@ -45,7 +47,7 @@ impl Platform {
         }
     }
 
-    pub fn total_load(map: &[Vec<Object>]) -> usize {
+    fn total_load(map: &[Vec<Object>]) -> usize {
         let rows = map.len();
 
         map.iter()
@@ -64,7 +66,7 @@ impl Platform {
             .sum()
     }
 
-    pub fn drop_north(&mut self) {
+    fn drop_north(&mut self) {
         let mut modified = true;
 
         while modified {
@@ -82,7 +84,7 @@ impl Platform {
         }
     }
 
-    pub fn drop_south(&mut self) {
+    fn drop_south(&mut self) {
         let mut modified = true;
 
         while modified {
@@ -100,7 +102,7 @@ impl Platform {
         }
     }
 
-    pub fn drop_west(&mut self) {
+    fn drop_west(&mut self) {
         let mut modified = true;
 
         while modified {
@@ -118,7 +120,7 @@ impl Platform {
         }
     }
 
-    pub fn drop_east(&mut self) {
+    fn drop_east(&mut self) {
         let mut modified = true;
 
         while modified {
@@ -137,7 +139,7 @@ impl Platform {
     }
 }
 
-pub fn parse_input(input: &str) -> Platform {
+fn parse_input(input: &str) -> Platform {
     let map = input
         .lines()
         .map(|line| line.chars().map(Object::from_ch).collect::<Vec<_>>())

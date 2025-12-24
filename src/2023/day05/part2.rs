@@ -1,6 +1,8 @@
-use super::{Almanac, get_proper_min_location};
+use super::{get_proper_min_location, parse_input};
 
-pub fn result(almanac: &Almanac) -> usize {
+pub fn result(input: &str) -> usize {
+    let almanac = parse_input(input);
+
     let seed_ranges = almanac
         .seeds
         .chunks_exact(2)
@@ -25,15 +27,13 @@ pub fn result(almanac: &Almanac) -> usize {
 #[cfg(test)]
 mod tests {
     use super::{
-        super::{INPUT, SAMPLE, parse_input},
+        super::{INPUT, SAMPLE},
         *,
     };
 
     #[test]
     fn test_sample() {
-        let almanac = parse_input(SAMPLE);
-
-        let result = result(&almanac);
+        let result = result(SAMPLE);
 
         assert_eq!(result, 46);
     }
@@ -41,9 +41,7 @@ mod tests {
     #[test]
     #[ignore = "takes very long to compute"]
     fn test_input() {
-        let almanac = parse_input(INPUT);
-
-        let result = result(&almanac);
+        let result = result(INPUT);
 
         assert_eq!(result, 69323688);
     }

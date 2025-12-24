@@ -1,13 +1,13 @@
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub struct Card {
-    pub id: i32,
-    pub winning_nums: Vec<i32>,
-    pub revealed_nums: Vec<i32>,
+struct Card {
+    id: i32,
+    winning_nums: Vec<i32>,
+    revealed_nums: Vec<i32>,
 }
 
-pub fn parse_input(input: &str) -> Vec<Card> {
+fn parse_input(input: &str) -> Vec<Card> {
     input
         .lines()
         .map(|line| {
@@ -44,7 +44,7 @@ pub fn parse_input(input: &str) -> Vec<Card> {
         .collect()
 }
 
-pub fn number_matches_count(card: &Card) -> usize {
+fn number_matches_count(card: &Card) -> usize {
     card.revealed_nums
         .iter()
         .filter(|c| card.winning_nums.contains(c))

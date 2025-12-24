@@ -1,6 +1,8 @@
-use super::{Almanac, get_proper_min_location};
+use super::{get_proper_min_location, parse_input};
 
-pub fn result(almanac: &Almanac) -> usize {
+pub fn result(input: &str) -> usize {
+    let almanac = parse_input(input);
+
     almanac
         .seeds
         .iter()
@@ -12,24 +14,20 @@ pub fn result(almanac: &Almanac) -> usize {
 #[cfg(test)]
 mod tests {
     use super::{
-        super::{INPUT, SAMPLE, parse_input},
+        super::{INPUT, SAMPLE},
         *,
     };
 
     #[test]
     fn test_sample() {
-        let almanac = parse_input(SAMPLE);
-
-        let min = result(&almanac);
+        let min = result(SAMPLE);
 
         assert_eq!(min, 35);
     }
 
     #[test]
     fn test_input() {
-        let almanac = parse_input(INPUT);
-
-        let min = result(&almanac);
+        let min = result(INPUT);
 
         assert_eq!(min, 111_627_841);
     }

@@ -1,9 +1,9 @@
-use super::{accessible_rolls, parse_input};
+use super::parse_input;
 
 pub fn result(input: &str) -> usize {
-    let grid = parse_input(input);
+    _ = parse_input(input);
 
-    accessible_rolls(&grid).len()
+    todo!()
 }
 
 #[cfg(test)]
@@ -17,13 +17,13 @@ mod tests {
     fn test_sample() {
         let result = result(SAMPLE);
 
-        assert_eq!(result, 13);
+        assert_eq!(result, 0);
     }
 
     #[test]
     fn test_input() {
         let result = result(INPUT);
 
-        assert_eq!(result, 1389);
+        assert_eq!(result, 0);
     }
 }

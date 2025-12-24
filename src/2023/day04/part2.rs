@@ -1,9 +1,10 @@
 use std::collections::BTreeMap;
 
-use super::{Card, number_matches_count};
+use super::{Card, number_matches_count, parse_input};
 
-pub fn result(cards: &[Card]) -> i32 {
-    card_count(cards).values().sum()
+pub fn result(input: &str) -> i32 {
+    let cards = parse_input(input);
+    card_count(&cards).values().sum()
 }
 
 fn card_count(cards: &[Card]) -> BTreeMap<i32, i32> {
@@ -49,17 +50,14 @@ mod tests {
 
     #[test]
     fn test_sample() {
-        let cards = parse_input(SAMPLE);
-        let result = result(&cards);
+        let result = result(SAMPLE);
 
         assert_eq!(result, 30);
     }
 
     #[test]
     fn test_input() {
-        let cards = parse_input(INPUT);
-
-        let result = result(&cards);
+        let result = result(INPUT);
 
         assert_eq!(result, 6283755);
     }

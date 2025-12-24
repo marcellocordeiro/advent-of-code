@@ -1,6 +1,8 @@
-use super::Game;
+use super::{Game, parse_input};
 
-pub fn result(games: &[Game]) -> i32 {
+pub fn result(input: &str) -> i32 {
+    let games = parse_input(input);
+
     games.iter().map(each_result).sum()
 }
 
@@ -21,7 +23,7 @@ fn each_result(game: &Game) -> i32 {
 #[cfg(test)]
 mod tests {
     use super::{
-        super::{INPUT, SAMPLE, parse_game, parse_input},
+        super::{INPUT, SAMPLE, parse_game},
         *,
     };
 
@@ -42,16 +44,14 @@ mod tests {
 
     #[test]
     fn test_sample() {
-        let games = parse_input(SAMPLE);
-        let actual_result = result(&games);
+        let actual_result = result(SAMPLE);
 
         assert_eq!(actual_result, 2286);
     }
 
     #[test]
     fn test_input() {
-        let games = parse_input(INPUT);
-        let actual_result = result(&games);
+        let actual_result = result(INPUT);
 
         assert_eq!(actual_result, 72706);
     }

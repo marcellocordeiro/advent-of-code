@@ -1,10 +1,7 @@
 use std::collections::HashMap;
 
-use super::parse_input;
-use crate::{
-    common::point::{DOWN, LEFT, Point, RIGHT},
-    year2025::day07::Field,
-};
+use super::{Field, parse_input};
+use crate::common::point::{DOWN, LEFT, Point, RIGHT};
 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);

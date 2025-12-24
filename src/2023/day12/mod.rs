@@ -3,12 +3,12 @@ use std::collections::HashMap;
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub struct Springs {
+struct Springs {
     conditions: String,
     ranges: Vec<usize>,
 }
 
-pub fn parse_input(input: &str) -> Vec<Springs> {
+fn parse_input(input: &str) -> Vec<Springs> {
     input
         .lines()
         .map(|line| {

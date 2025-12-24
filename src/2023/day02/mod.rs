@@ -1,22 +1,22 @@
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub struct Play {
-    pub red: i32,
-    pub green: i32,
-    pub blue: i32,
+struct Play {
+    red: i32,
+    green: i32,
+    blue: i32,
 }
 
-pub struct Game {
-    pub id: i32,
-    pub plays: Vec<Play>,
+struct Game {
+    id: i32,
+    plays: Vec<Play>,
 }
 
-pub fn parse_input(input: &str) -> Vec<Game> {
+fn parse_input(input: &str) -> Vec<Game> {
     input.lines().map(parse_game).collect()
 }
 
-pub fn parse_game(line: &str) -> Game {
+fn parse_game(line: &str) -> Game {
     let (id, raw_plays) = {
         let (id_part, plays_part) = line.split_once(": ").unwrap();
 

@@ -1,11 +1,13 @@
-use super::{EngineNumber, EngineSymbol, get_surrounding_coordinates};
+use super::{EngineNumber, EngineSymbol, get_surrounding_coordinates, parse_input};
 
-pub fn result(numbers: &[EngineNumber], symbols: &[EngineSymbol]) -> i32 {
+pub fn result(input: &str) -> i32 {
+    let (numbers, symbols) = parse_input(input);
+
     symbols
         .iter()
         .filter(|s| is_gear(s))
         .filter_map(|s| {
-            let surrounding_numbers = get_surrounding_numbers(s, numbers);
+            let surrounding_numbers = get_surrounding_numbers(s, &numbers);
 
             (surrounding_numbers.len() == 2)
                 .then_some(surrounding_numbers.into_iter().product::<i32>())
@@ -34,24 +36,20 @@ fn get_surrounding_numbers(symbol: &EngineSymbol, numbers: &[EngineNumber]) -> V
 #[cfg(test)]
 mod tests {
     use super::{
-        super::{INPUT, SAMPLE, parse_input},
+        super::{INPUT, SAMPLE},
         *,
     };
 
     #[test]
     fn test_sample() {
-        let (numbers, symbols) = parse_input(SAMPLE);
-
-        let result = result(&numbers, &symbols);
+        let result = result(SAMPLE);
 
         assert_eq!(result, 467835);
     }
 
     #[test]
     fn test_input() {
-        let (numbers, symbols) = parse_input(INPUT);
-
-        let result = result(&numbers, &symbols);
+        let result = result(INPUT);
 
         assert_eq!(result, 80253814);
     }

@@ -3,18 +3,18 @@ use itertools::Itertools;
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub struct Universe {
+struct Universe {
     galaxies: Vec<Galaxy>,
     i_len: usize,
     j_len: usize,
 }
 
-pub struct Galaxy {
+struct Galaxy {
     i: usize,
     j: usize,
 }
 
-pub fn parse_input(input: &str) -> Universe {
+fn parse_input(input: &str) -> Universe {
     let lines = input.lines().collect_vec();
 
     let i_len = lines.len();
@@ -38,7 +38,7 @@ pub fn parse_input(input: &str) -> Universe {
     }
 }
 
-pub fn expand_universe(universe: &mut Universe, expanding_factor: usize) {
+fn expand_universe(universe: &mut Universe, expanding_factor: usize) {
     let empty_rows = (0..universe.i_len)
         .filter(|i| !universe.galaxies.iter().any(|g| g.i == *i))
         .collect_vec();

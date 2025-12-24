@@ -3,23 +3,24 @@ use itertools::Itertools;
 pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
-pub struct Almanac {
+struct Almanac {
     seeds: Vec<usize>,
     maps: Vec<Map>,
 }
 
-pub struct Map {
-    pub map_type: String,
-    pub entries: Vec<Entry>,
+struct Map {
+    #[allow(dead_code)]
+    map_type: String,
+    entries: Vec<Entry>,
 }
 
-pub struct Entry {
-    pub src_start: usize,
-    pub dest_start: usize,
-    pub length: usize,
+struct Entry {
+    src_start: usize,
+    dest_start: usize,
+    length: usize,
 }
 
-pub fn parse_input(input: &str) -> Almanac {
+fn parse_input(input: &str) -> Almanac {
     let (seeds, maps) = input.split_once('\n').unwrap();
 
     let seeds = seeds
@@ -77,7 +78,7 @@ fn get_proper_mapped_id(id: usize, ranges: &[Entry]) -> usize {
         })
 }
 
-pub fn get_proper_min_location(seed: usize, maps: &[Map]) -> usize {
+fn get_proper_min_location(seed: usize, maps: &[Map]) -> usize {
     maps.iter()
         .fold(seed, |acc, map| get_proper_mapped_id(acc, &map.entries))
 }

@@ -4,7 +4,7 @@ pub const INPUT: &str = include_str!("inputs/input.txt");
 pub const SAMPLE: &str = include_str!("inputs/sample.txt");
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Object {
+enum Object {
     Ash,
     Rock,
 }
@@ -21,7 +21,7 @@ impl Object {
     }
 
     #[must_use]
-    pub fn flip(self) -> Self {
+    fn flip(self) -> Self {
         match self {
             Self::Ash => Self::Rock,
             Self::Rock => Self::Ash,
@@ -29,7 +29,7 @@ impl Object {
     }
 }
 
-pub fn find_row(map: &[Vec<Object>], ignore: Option<usize>) -> Option<usize> {
+fn find_row(map: &[Vec<Object>], ignore: Option<usize>) -> Option<usize> {
     let pair = (0..map.len())
         .tuple_windows()
         .find(|(up_start, down_start)| {
@@ -46,7 +46,7 @@ pub fn find_row(map: &[Vec<Object>], ignore: Option<usize>) -> Option<usize> {
     Some(pair.0 + 1)
 }
 
-pub fn find_column(map: &[Vec<Object>], ignore: Option<usize>) -> Option<usize> {
+fn find_column(map: &[Vec<Object>], ignore: Option<usize>) -> Option<usize> {
     let row_size = map[0].len();
 
     let pair = (0..row_size)
@@ -70,7 +70,7 @@ pub fn find_column(map: &[Vec<Object>], ignore: Option<usize>) -> Option<usize> 
     Some(pair.0 + 1)
 }
 
-pub fn parse_input(input: &str) -> Vec<Vec<Vec<Object>>> {
+fn parse_input(input: &str) -> Vec<Vec<Vec<Object>>> {
     input
         .trim()
         .split("\n\n")
