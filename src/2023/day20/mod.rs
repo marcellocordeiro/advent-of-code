@@ -124,7 +124,7 @@ fn parse_input(input: &str) -> HashMap<String, Module> {
                 }
             }
 
-            Module::Untyped { .. } => continue,
+            Module::Untyped { .. } => {}
         }
     }
 

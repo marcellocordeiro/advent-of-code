@@ -13,15 +13,17 @@ enum Field {
     Splitter,
 }
 
-impl From<char> for Field {
-    fn from(value: char) -> Self {
-        match value {
+impl TryFrom<char> for Field {
+    type Error = String;
+
+    fn try_from(value: char) -> Result<Self, Self::Error> {
+        Ok(match value {
             '.' => Self::Space,
             'S' => Self::Start,
             '^' => Self::Splitter,
 
-            _ => panic!("Invalid field: {value}"),
-        }
+            _ => return Err(format!("Invalid field: {value}")),
+        })
     }
 }
 
@@ -29,7 +31,11 @@ fn parse_input(input: &str) -> Grid<Field> {
     Grid::from(
         input
             .lines()
-            .map(|line| line.chars().map(Field::from).collect())
+            .map(|line| {
+                line.chars()
+                    .map(|ch| Field::try_from(ch).unwrap())
+                    .collect()
+            })
             .collect(),
     )
 }

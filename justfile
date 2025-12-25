@@ -26,6 +26,9 @@ update:
   cargo upgrade -i
   cargo update
 
+test:
+  cargo test -r
+
 generate year day:
   echo "{{year}} day{{day}}"
   cp -r "./_template" "./src/{{year}}/day{{day}}"

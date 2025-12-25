@@ -1,6 +1,7 @@
 use std::collections::HashSet;
 
 use itertools::Itertools;
+use num::ToPrimitive;
 
 use super::{distance_squared, parse_input};
 
@@ -51,7 +52,11 @@ fn result_with_max_connections(input: &str) -> usize {
         circuits[a_set_index].extend(b_set);
     }
 
-    last_pair.map(|(a, b)| (a.x * b.x) as usize).unwrap()
+    last_pair
+        .map(|(a, b)| a.x * b.x)
+        .unwrap()
+        .to_usize()
+        .unwrap()
 }
 
 #[cfg(test)]

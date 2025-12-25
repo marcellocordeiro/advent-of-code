@@ -12,14 +12,16 @@ enum Operation {
     Mul,
 }
 
-impl From<char> for Operation {
-    fn from(value: char) -> Self {
-        match value {
+impl TryFrom<char> for Operation {
+    type Error = String;
+
+    fn try_from(value: char) -> Result<Self, Self::Error> {
+        Ok(match value {
             '+' => Self::Add,
             '*' => Self::Mul,
 
-            _ => panic!("Invalid operation: {value}"),
-        }
+            _ => return Err(format!("Invalid operation: {value}")),
+        })
     }
 }
 
@@ -54,7 +56,7 @@ fn parse_input(input: &str) -> Vec<Column> {
                 .map(|line| line[window_start..=window_end].to_string())
                 .inspect(|number| assert!(number.len() == length))
                 .collect();
-            let operation = Operation::from(operations[window_start]);
+            let operation = Operation::try_from(operations[window_start]).unwrap();
 
             let column = Column {
                 length,

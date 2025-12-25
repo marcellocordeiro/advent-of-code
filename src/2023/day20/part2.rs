@@ -61,9 +61,8 @@ pub fn result(input: &str) -> usize {
             for output in outputs {
                 if tg_count_map.contains_key(&source) && output == "tg" && pulse {
                     if let Some(value) = tg_count_map.get_mut(&source) {
-                        match value {
-                            None => *value = Some(button_presses),
-                            Some(_) => {}
+                        if value.is_none() {
+                            *value = Some(button_presses);
                         }
                     }
 

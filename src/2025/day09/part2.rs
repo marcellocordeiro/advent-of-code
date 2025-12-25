@@ -1,9 +1,32 @@
-use super::parse_input;
+use itertools::Itertools;
+
+use super::{area, parse_input};
 
 pub fn result(input: &str) -> usize {
-    _ = parse_input(input);
+    let tiles = parse_input(input);
 
-    todo!()
+    let edges = tiles
+        .clone()
+        .into_iter()
+        .circular_tuple_windows::<(_, _)>()
+        .collect_vec();
+
+    tiles
+        .clone()
+        .into_iter()
+        .cartesian_product(tiles)
+        .filter(|(a, b)| {
+            // TODO: rewrite this algorithm (AABB)
+            edges.iter().all(|edge| {
+                edge.0.0 <= a.0.min(b.0) && edge.1.0 <= a.0.min(b.0)
+                    || edge.0.0 >= a.0.max(b.0) && edge.1.0 >= a.0.max(b.0)
+                    || edge.0.1 <= a.1.min(b.1) && edge.1.1 <= a.1.min(b.1)
+                    || edge.0.1 >= a.1.max(b.1) && edge.1.1 >= a.1.max(b.1)
+            })
+        })
+        .map(|(a, b)| area(a, b))
+        .max()
+        .unwrap()
 }
 
 #[cfg(test)]
@@ -17,13 +40,13 @@ mod tests {
     fn test_sample() {
         let result = result(SAMPLE);
 
-        assert_eq!(result, 0);
+        assert_eq!(result, 24);
     }
 
     #[test]
     fn test_input() {
         let result = result(INPUT);
 
-        assert_eq!(result, 0);
+        assert_eq!(result, 1569262188);
     }
 }

@@ -6,9 +6,10 @@ pub fn result(input: &str) -> usize {
     let tiles = parse_input(input);
 
     tiles
+        .clone()
         .into_iter()
-        .combinations(2)
-        .map(|comb| area(comb[0], comb[1]))
+        .cartesian_product(tiles)
+        .map(|(a, b)| area(a, b))
         .max()
         .unwrap()
 }
