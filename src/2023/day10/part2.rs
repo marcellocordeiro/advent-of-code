@@ -2,6 +2,7 @@ use itertools::Itertools;
 
 use super::{Maze, Tile, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> i64 {
     let maze = parse_input(input);
 

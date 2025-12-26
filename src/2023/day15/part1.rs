@@ -1,5 +1,6 @@
 use super::{hash, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let items = parse_input(input);
     items.into_iter().map(|item| hash(item) as usize).sum()

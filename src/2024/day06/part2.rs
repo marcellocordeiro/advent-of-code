@@ -3,6 +3,7 @@ use std::collections::HashSet;
 use super::{Action, Input, next_state, parse_input};
 use crate::common::point::Point;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let input = parse_input(input);
 

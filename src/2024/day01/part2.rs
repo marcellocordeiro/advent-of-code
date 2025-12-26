@@ -1,5 +1,6 @@
 use super::parse_input;
 
+#[must_use] 
 pub fn result(input: &str) -> i32 {
     let (left, right) = parse_input(input);
 

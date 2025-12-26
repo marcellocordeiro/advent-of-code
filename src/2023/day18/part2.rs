@@ -1,5 +1,6 @@
 use super::{Direction, Entry, calculate_area};
 
+#[must_use] 
 pub fn result(input: &str) -> isize {
     let entries = parse_input(input);
 

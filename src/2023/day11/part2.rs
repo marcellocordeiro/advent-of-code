@@ -2,6 +2,7 @@ use itertools::Itertools;
 
 use super::{expand_universe, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let mut universe = parse_input(input);
 

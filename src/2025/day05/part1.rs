@@ -1,5 +1,6 @@
 use super::parse_input;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let database = parse_input(input);
 

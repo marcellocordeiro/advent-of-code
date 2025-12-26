@@ -1,5 +1,6 @@
 use super::{Block, checksum, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let mut blocks = parse_input(input);
 

@@ -2,6 +2,7 @@ use std::collections::BTreeMap;
 
 use super::{Card, number_matches_count, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> i32 {
     let cards = parse_input(input);
     card_count(&cards).values().sum()

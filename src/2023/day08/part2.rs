@@ -2,6 +2,7 @@ use num::Integer;
 
 use super::parse_input;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let guide = parse_input(input);
 

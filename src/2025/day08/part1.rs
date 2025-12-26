@@ -4,6 +4,7 @@ use itertools::Itertools;
 
 use super::{distance_squared, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     result_with_max_connections(input, 1000)
 }

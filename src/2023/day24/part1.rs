@@ -1,5 +1,6 @@
 use super::parse_input;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let _hailstones = parse_input(input);
     0

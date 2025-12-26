@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use super::{hash, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let items = parse_input(input);
     let mut boxes = HashMap::<u8, Vec<(&str, usize)>>::new();

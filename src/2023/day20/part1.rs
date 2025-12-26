@@ -2,6 +2,7 @@ use std::collections::VecDeque;
 
 use super::parse_input;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let mut modules = parse_input(input);
     let mut queue = VecDeque::new();

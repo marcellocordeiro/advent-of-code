@@ -5,6 +5,7 @@ use crate::common::point::{DOWN, LEFT, Point, RIGHT, UP};
 
 const POSSIBLE_ENCODINGS: [&str; 4] = ["MMSS", "SSMM", "SMMS", "MSSM"];
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let word_search = parse_input(input);
 

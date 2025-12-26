@@ -3,6 +3,7 @@ use std::collections::HashMap;
 use super::{Field, parse_input};
 use crate::common::point::{DOWN, LEFT, Point, RIGHT};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
     let mut beams = HashMap::<Point, usize>::new();

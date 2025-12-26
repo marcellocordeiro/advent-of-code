@@ -1,5 +1,6 @@
 use super::{max_joltage, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let banks = parse_input(input);
 

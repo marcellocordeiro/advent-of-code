@@ -13,10 +13,12 @@ pub const LEFT: Point = Point::new(-1, 0);
 pub const RIGHT: Point = Point::new(1, 0);
 
 impl Point {
+    #[must_use] 
     pub const fn new(x: PointDataType, y: PointDataType) -> Self {
         Self { x, y }
     }
 
+    #[must_use] 
     pub const fn from_direction_char(ch: char) -> Option<Self> {
         Some(match ch {
             '^' => UP,
@@ -28,6 +30,7 @@ impl Point {
         })
     }
 
+    #[must_use] 
     pub const fn to_direction_char(self) -> char {
         match self {
             UP => '^',

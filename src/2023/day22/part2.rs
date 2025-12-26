@@ -1,3 +1,4 @@
+#[must_use] 
 pub fn result(_input: &str) -> usize {
     0
 }

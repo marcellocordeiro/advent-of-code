@@ -1,5 +1,6 @@
 use super::parse_input;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let ranges = parse_input(input);
 

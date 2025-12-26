@@ -2,6 +2,7 @@ use itertools::Itertools;
 
 use super::{area, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let tiles = parse_input(input);
 

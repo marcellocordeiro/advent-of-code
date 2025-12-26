@@ -1,5 +1,6 @@
 use super::{extrapolate, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> i64 {
     let sequences = parse_input(input);
 

@@ -1,3 +1,4 @@
+#[must_use] 
 pub fn count_digits(num: usize) -> usize {
     if num == 0 {
         return 1;
@@ -6,6 +7,7 @@ pub fn count_digits(num: usize) -> usize {
     (num.ilog10() + 1) as usize
 }
 
+#[must_use] 
 pub fn split_digits_in_half(num: usize) -> (usize, usize) {
     let digits = count_digits(num) as u32;
     let factor = 10_usize.pow(digits / 2);

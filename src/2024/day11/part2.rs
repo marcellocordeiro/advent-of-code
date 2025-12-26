@@ -1,5 +1,6 @@
 use super::{iterate, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let mut stones = parse_input(input);
 

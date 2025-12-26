@@ -2,6 +2,7 @@ use std::collections::HashSet;
 
 use super::{Action, Input, next_state, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let Input {
         grid,

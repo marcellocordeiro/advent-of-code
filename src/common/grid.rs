@@ -10,6 +10,7 @@ pub struct Grid<T> {
 }
 
 impl<T> Grid<T> {
+    #[must_use] 
     pub fn from(raw: Vec<Vec<T>>) -> Self {
         let height = raw.len() as i32;
         let width = raw[0].len() as i32; // Assumes all lines have the same width
@@ -23,6 +24,7 @@ impl<T> Grid<T> {
         }
     }
 
+    #[must_use] 
     pub fn contains_point(&self, point: Point) -> bool {
         (point.x >= 0 && point.y >= 0) && ((point.x < self.width) && (point.y < self.height))
     }

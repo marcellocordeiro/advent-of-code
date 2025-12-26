@@ -1,5 +1,6 @@
 use super::{Race, win_count_optimized};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let race = parse_input(input);
 

@@ -1,5 +1,6 @@
 use super::{Action, Part, Rule, Workflow, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let (workflows, parts) = parse_input(input);
 

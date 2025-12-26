@@ -1,5 +1,6 @@
 use super::{find_column, find_row, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let maps = parse_input(input);
 

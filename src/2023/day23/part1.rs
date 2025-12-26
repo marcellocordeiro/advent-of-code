@@ -3,6 +3,7 @@ use pathfinding::directed::bfs::bfs;
 
 use super::{Direction, Grid, Position, You, parse_input, possible_directions};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
 

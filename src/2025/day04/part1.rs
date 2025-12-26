@@ -1,5 +1,6 @@
 use super::{accessible_rolls, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
 

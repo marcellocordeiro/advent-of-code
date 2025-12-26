@@ -1,5 +1,6 @@
 use super::{OrderingRule, is_correctly_ordered, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> i32 {
     let input = parse_input(input);
 

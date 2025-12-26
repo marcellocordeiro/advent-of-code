@@ -3,6 +3,7 @@ use super::{get_shortest_path, parse_input};
 const MIN_STEPS: usize = 4;
 const MAX_STEPS: usize = 10;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
 

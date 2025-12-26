@@ -3,6 +3,7 @@ use itertools::Itertools;
 use super::parse_input;
 use crate::common::point::{DOWN, LEFT, Point, RIGHT, UP};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let word_search = parse_input(input);
 

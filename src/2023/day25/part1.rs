@@ -12,6 +12,7 @@ use std::collections::{HashMap, HashSet, VecDeque};
 
 use itertools::Itertools;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let nodes = parse_input(input);
 

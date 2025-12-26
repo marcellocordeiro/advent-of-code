@@ -1,5 +1,6 @@
 use super::{Game, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> i32 {
     let games = parse_input(input);
 

@@ -6,6 +6,7 @@ use crate::common::{
     point::{DOWN, LEFT, Point, RIGHT, UP},
 };
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let map = parse_input(input);
 

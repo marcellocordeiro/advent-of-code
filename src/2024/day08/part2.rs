@@ -4,6 +4,7 @@ use itertools::Itertools;
 
 use super::parse_input;
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let input = parse_input(input);
 

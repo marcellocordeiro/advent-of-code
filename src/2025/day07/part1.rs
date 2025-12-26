@@ -6,6 +6,7 @@ use crate::{
     year2025::day07::Field,
 };
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
     let mut beams = HashSet::<Point>::new();

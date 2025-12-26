@@ -1,5 +1,6 @@
 use super::{get_proper_min_location, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let almanac = parse_input(input);
 

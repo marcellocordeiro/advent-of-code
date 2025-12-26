@@ -1,5 +1,6 @@
 use super::{Pattern, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> i32 {
     let patterns = parse_input(input);
 

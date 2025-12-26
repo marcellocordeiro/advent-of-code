@@ -1,5 +1,6 @@
 use super::{Beam, Direction, get_visited_count, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
 

@@ -1,5 +1,6 @@
 use super::{is_safe, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let reports = parse_input(input);
 

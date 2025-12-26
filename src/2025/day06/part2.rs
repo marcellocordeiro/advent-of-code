@@ -1,5 +1,6 @@
 use super::{Operation, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let columns = parse_input(input);
 

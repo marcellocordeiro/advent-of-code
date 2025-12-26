@@ -4,6 +4,7 @@ use colored::Colorize;
 
 use super::{Grid, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let grid = parse_input(input);
 

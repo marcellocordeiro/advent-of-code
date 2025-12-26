@@ -1,5 +1,6 @@
 use super::{EngineNumber, EngineSymbol, get_surrounding_coordinates, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> i32 {
     let (numbers, symbols) = parse_input(input);
 

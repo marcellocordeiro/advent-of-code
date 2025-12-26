@@ -1,5 +1,6 @@
 use super::{parse_input, permutations};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let groups = parse_input(input);
 

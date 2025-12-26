@@ -1,5 +1,6 @@
 use super::{Platform, parse_input};
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let mut platform = parse_input(input);
     platform.drop_north();

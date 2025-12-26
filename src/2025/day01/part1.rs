@@ -5,6 +5,7 @@ struct State {
     zero_count: usize,
 }
 
+#[must_use] 
 pub fn result(input: &str) -> usize {
     let rotations = parse_input(input);
 
